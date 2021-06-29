@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - nmae:Checkout source code
-        uses:actions/checkout@master
+      - nmae: Checkout source code
+        uses: actions/checkout@master
 
       - name: Set up Node.js
         uses: actions/setup-node@master
