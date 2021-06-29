@@ -6,9 +6,9 @@ name: Deployment
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -19,27 +19,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - nmae:Checkout source code
-      uses:actions/checkout@master
+      - nmae:Checkout source code
+        uses:actions/checkout@master
 
-    - name: Set up Node.js
-      uses: actions/setup-node@master
-      with:
-        node-version: 14.x
-    
-    -name: install dependencies
-      run: yarn install
+      - name: Set up Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: 14.x
 
-    - name: Build page
-      run: yarn build
-      env:
-        NODE_ENV: production
-    
-    - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        githbub: ${{ secrets.GITGUB_TOKEN }}
-        publish_dir: ./dist
+      - name: install dependencies
+        run: yarn install
+
+      - name: Build page
+        run: yarn build
+        env:
+          NODE_ENV: production
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          githbub: ${{ secrets.GITGUB_TOKEN }}
+          publish_dir: ./dist
 
   # This workflow contains a single job called "build"
   build:
